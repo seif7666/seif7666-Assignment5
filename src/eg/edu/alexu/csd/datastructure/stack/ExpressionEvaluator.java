@@ -30,7 +30,6 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
         if (expression == null || expression.length() == 0) {
             throw new RuntimeException("Incorrect Expression!");
         }
-        clear();
         Stack stat = new Stack();
         Stack statement = new Stack();
         String postfix = "";
@@ -231,7 +230,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
             case '/':
                 if (num2 == 0)
                     throw new ArithmeticException("Division by 0 is not allowed!");
-                return (float) num1 / num2;
+                return num1 / num2;
         }
         throw new RuntimeException("Incorrect Expression!");
     }
@@ -241,7 +240,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
      * False otherwise
      * @param symb
      * The character to be examined.
-     * @return
+     * @return true if a letter
      */
     private boolean isLetter(char symb) {
         return (symb >= 'a' && symb <= 'z') || (symb >= 'A' && symb <= 'Z');
@@ -250,7 +249,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
     /**
      * Check whether character is a digit or not.
      * @param symb
-     * @return
+     * @return true if a digit
      */
     private boolean isDigit(char symb) {
         return symb >= '0' && symb <= '9';
@@ -260,7 +259,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
      *It gets the value of constant saved.
      * @param letter
      * The letter representing the constant.
-     * @return
+     * @return value of letter
      */
     private int getValue(char letter) {
         for (int i = 0; i < letters.size(); i++) {
@@ -284,7 +283,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
     /**
      * Check whether the letter is already saved or not.
      * @param letter
-     * @return
+     * @return true if letter is found.
      */
 
     private boolean isThere(char letter) {
