@@ -1,7 +1,5 @@
 package eg.edu.alexu.csd.datastructure.stack;
 
-import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class ExpressionEvaluatorTest {
