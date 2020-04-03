@@ -40,8 +40,11 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
         boolean negative = false;
         for (int i = 0; i < expression.length(); i++) {
             char symb = expression.charAt(i);
-            String num = "";
-            if (isDigit(symb) || isLetter(symb)) {
+            if(symb==' '){
+                continue;
+            }
+            else if (isDigit(symb) || isLetter(symb)) {
+                String num = "";
                 if (isDigit(symb)) {
                     if (negative) {
                         num += "-";
