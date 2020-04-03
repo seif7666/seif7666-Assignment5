@@ -8,6 +8,10 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
      */
     private SingleLinked letters = new SingleLinked();
     private SingleLinked nums = new SingleLinked();
+    /**
+     * It saves the last postifix to be entered to evaluate.
+     */
+    String postfix=null;
 
     /**
      * The infix to postfix method
@@ -141,6 +145,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
             }
             count++;
         }
+        this.postfix=postfix;
         return postfix;
     }
 
@@ -154,7 +159,14 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 
     @Override
     public int evaluate(String expression) {
-        assignValues();
+        if(postfix.equals(expression)) {
+            assignValues();
+            postfix=null;
+        }
+        else {
+            clear();
+            postfix=null;
+        }
         if (expression == null)
             throw new NullPointerException("Expression not found!");
         Stack operation = new Stack();
